@@ -28,22 +28,34 @@ jobs:
         with:
           name: artifact-file
           path: ./github-action.txt
-
   build_job:
-    needs: setup_job
+    needs: 
+      - setup_job
     runs-on: ubuntu-latest
     steps:
-      - name: display hello
+      - name: display hello 
         run: echo hello
-
-      - name: download artifact
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: artifact-file
-          path: ./artifact
-
+          name: my-file
       - name: display github-action.txt
-        run: cat artifact/github-action.txt
+        run: cat github-action.txt
+
+#   build_job:
+#     needs: setup_job
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: display hello
+#         run: echo hello
+
+#       - name: download artifact
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: artifact-file
+#           path: ./artifact
+
+#       - name: display github-action.txt
+#         run: cat artifact/github-action.txt
 
   deploy_job:
     needs: build_job
