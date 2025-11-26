@@ -40,8 +40,6 @@ jobs:
                     path: ./artifacts
             - name: display github-action.txt
               run: cat ./artifacts/github-action.txt
-            - name: display github-action.txt
-              run: cat github-action.txt
     deploy_job:
         needs: build_job
         runs-on: macos-latest
